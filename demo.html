@@ -1,0 +1,111 @@
+<!DOCTYPE HTML >
+<html>
+<head>
+  <title></title>
+
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.js"></script>
+  <script type="text/javascript" src="inc/jquery.mb.emoticons.js"></script>
+  <script type="text/javascript">
+  $(function(){
+  
+    $("#ta").mbSmilesBox();
+  
+  })
+  </script>
+  <style type="text/css">
+  
+  
+.mbSmilesWrapper{
+  position:relative;
+  display:inline-block;
+  marginwidth-topmargin:15px;
+}
+
+    .mbSmilesBox{
+      position:absolute;
+      width:290px;
+      background:#f3f3f3;
+      padding:5px;
+      -moz-box-shadow: #666666 1px 1px 6px;
+      -webkit-box-shadow: #666666 1px 1px 6px;
+      margin-top:-5px;
+      z-index:1001;
+    }
+    span.emoticon{
+      background-color:#f3f3f3;
+      display:block;
+      float:left;
+      width:25px;
+      height:25px;
+      cursor:pointer;
+      border-bottom:1px dotted #ccc;
+      border-right:1px dotted #ccc;
+      padding:3px;
+    }
+    span.emoticon:hover{
+      position:relative;
+      z-index:1;
+      background-color:#fff;
+      -moz-box-shadow: #666666 1px 1px 6px;
+      -webkit-box-shadow: #666666 1px 1px 6px;
+    }
+    
+    span.mbSmilesButton img{
+        width:12px;
+        height:12px;
+    }
+    span.mbSmilesButton{
+        position:absolute;
+        right:5px;
+        z-index:1000;
+    }
+    
+    #render{
+      width:500px;
+      background:#f3f3f3;
+      padding:5px;
+      -moz-box-shadow: #666666 1px 1px 6px;
+      -webkit-box-shadow: #666666 1px 1px 6px;
+    }
+    #ta{
+      border:none;
+      width:500px;
+      height:200px;
+      background:#f0f8ff;
+      padding:5px;
+      -moz-box-shadow: #666666 1px 1px 6px;
+    }
+
+    span.btn{
+      padding:5px;
+      margin:10px;
+      display:inline-block;
+      cursor:pointer;
+      font:12px/14px Arial, Helvetica, sans-serif;
+      color:#aaa;
+      background-color:#eee;
+      -moz-border-radius:10px;
+      -webkit-border-radius:10px;
+      -moz-box-shadow:#999 2px 0px 3px;
+      -webkit-box-shadow:#999 2px 0px 3px;
+    }
+    span.btn:hover{
+      background-color:#000;
+    }
+
+
+  </style>
+
+</head>
+<body>
+
+
+<textarea id="ta" class="ta"></textarea>
+<br>
+<span class="btn" onclick="$('#render').html($('#ta').val()).emoticonize(true).show()">render</span>
+
+<div id="render" style="display:none"></div>
+
+</body>
+</html>
