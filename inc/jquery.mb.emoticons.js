@@ -110,13 +110,13 @@
       "(yawn)":       "yawn",
       "(yes)":        "yes"
     },
-    smilesPlusVariations: {
-        ":-)": "smile"
+    smilesVariations: {
+        ":-) ": "smile"
     }
     ,
     getRegExp:function(){
       var ret="/";
-      $.each($.mbEmoticons.smilesPlusVariations,function(i){
+      $.each($.mbEmoticons.smilesVariations,function(i){
         var emot= i.replace(/\)/g,"\\)").replace(/\(/g, "\\(").replace(/\|/g, "\\|").replace(/\*/g, "\\*").replace(/\^/g, "\\^");
         ret +="("+emot+")|";
       });
@@ -247,7 +247,7 @@
     function convert (text){
       var icons = $.mbEmoticons.getRegExp();
       return text.replace (icons,function(str){
-        var ret= $.mbEmoticons.smilesPlusVariations[str];
+        var ret= $.mbEmoticons.smilesVariations[str];
         var ext=animate?".gif":".png";
         if (ret){
           ret="<img src='"+$.mbEmoticons.smilesPath+"smiley/"+ret+ext+"' align='absmiddle'>";
@@ -265,7 +265,7 @@
     return this;
   };
 
-  $.extend($.mbEmoticons.smilesPlusVariations,$.mbEmoticons.smiles);
+  $.extend($.mbEmoticons.smilesVariations,$.mbEmoticons.smiles);
 
   jQuery.fn.mbSmilesBox= $.mbEmoticons.addSmilesBox;
   jQuery.fn.mbOpenSmilesBox= $.mbEmoticons.openSmileBox;
