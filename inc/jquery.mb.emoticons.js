@@ -23,11 +23,11 @@
     smilesPath:"",
     smiles: {
       "(angel)":      "angel",
-      ":@ ":          "angry",
+      " :@":          "angry",
       "(bandit)":     "bandit",
       "(bear)":       "bear",
       "(beer)":       "beer",
-      ":D ":          "bigsmile",
+      " :D":          "bigsmile",
       "(bow)":        "bow",
       "(u)":          "brokenheart",
       "(bug)":        "bug",
@@ -36,8 +36,8 @@
       "(cash)":       "cash",
       "(clap)":       "clapping",
       "(coffee)":     "coffee",
-      "8-) ":         "cool",
-      ";( ":          "crying",
+      " 8-)":         "cool",
+      " ;(":          "crying",
       "(dance)":      "dance",
       "(devil)":      "devil",
       "(doh)":        "doh",
@@ -47,7 +47,7 @@
       "(blush)":      "eblush",
       "(emo)":        "emo",
       "(envy)":       "envy",
-      "]:) ":         "evilgrin",
+      " ]:)":         "evilgrin",
       "(F)":          "flower",
       "(fubar)":      "fubar",
       "(giggle)":     "giggle",
@@ -60,7 +60,7 @@
       "(inlove)":     "inlove",
       "(wasntme)":    "itwasntme",
       "(kiss)":       "kiss",
-      ":x ":          "lipssealed",
+      " :x":          "lipssealed",
       "(mail)":       "mail",
       "(makeup)":     "makeup",
       "(finger)":     "middlefinger",
@@ -70,7 +70,7 @@
       "(muscle)":     "muscle",
       "(music)":      "music",
       "(myspace)":    "myspace",
-      "8-| ":         "nerd",
+      " 8-|":         "nerd",
       "(ninja)":      "ninja",
       "(no)":         "no",
       "(nod)":        "nod",
@@ -83,17 +83,17 @@
       "(rain)":       "rain",
       "(rock)":       "rock",
       "(rofl)":       "rofl",
-      ":( ":          "sadsmile",
+      " :(":          "sadsmile",
       "(shake)":      "shake",
       "(skype)":      "skype",
-      "|-) ":         "sleepy",
+      " |-)":         "sleepy",
       "(smile)":      "smile",
       "(smirk)":      "smirk",
       "(smoke)":      "smoke",
-      ":| ":          "speechless",
+      " :|":          "speechless",
       "(*)":          "star",
       "(sun)":        "sun",
-      ":O ":          "surprised",
+      " :O":          "surprised",
       "(swear)":      "swear",
       "(sweat)":   "sweating",
       "(talk)":       "talking",
@@ -101,18 +101,20 @@
       "(o)":          "time",
       "(tmi)":        "tmi",
       "(toivo)":      "toivo",
-      ":P ":          "tongueout",
+      " :P":          "tongueout",
       "(wait)":       "wait",
       "(whew)":       "whew",
       "(wink)":       "wink",
-      ":^) ":         "wondering",
-      ":S ":          "worried",
+      " :^)":         "wondering",
+      " :S":          "worried",
       "(yawn)":       "yawn",
       "(yes)":        "yes"
     },
     smilesVariations: {
-        ":-) ": "smile"
-    }
+      ":-)": "smile",
+      ":)": "smile"
+    },
+    smileBoxBtn:"#smileBoxBtn"
     ,
     getRegExp:function(){
       var ret="/";
@@ -127,7 +129,7 @@
       $(this).each(function(){
 
         var textarea=$(this);
-        
+
         var wrapper=$("<span/>").addClass("mbSmilesWrapper");
         textarea.wrapAll(wrapper);
 
@@ -211,7 +213,7 @@
     });
   };
 
-    jQuery.fn.caret = function(pos) {
+  jQuery.fn.caret = function(pos) {
     var target = this[0];
     if (arguments.length == 0) { //get
       if (target.selectionStart) { //DOM
@@ -219,15 +221,15 @@
         return pos > 0 ? pos : 0;
       }
       else if (target.createTextRange) { //IE
-		target.focus();
-		var range = document.selection.createRange();
-		if (range == null)
-			return '0';
-		var re = target.createTextRange();
-		var rc = re.duplicate();
-		re.moveToBookmark(range.getBookmark());
-		rc.setEndPoint('EndToStart', re);
-		return rc.text.length;
+        target.focus();
+        var range = document.selection.createRange();
+        if (range == null)
+          return '0';
+        var re = target.createTextRange();
+        var rc = re.duplicate();
+        re.moveToBookmark(range.getBookmark());
+        rc.setEndPoint('EndToStart', re);
+        return rc.text.length;
       }
       else return 0;
     } //set
@@ -242,7 +244,7 @@
     }
   };
 
-
+  // variation from Roberto Bichierai emoticonize component.
   jQuery.fn.emoticonize = function (animate) {
     function convert (text){
       var icons = $.mbEmoticons.getRegExp();
@@ -252,14 +254,14 @@
         if (ret){
           ret="<img src='"+$.mbEmoticons.smilesPath+"smiley/"+ret+ext+"' align='absmiddle'>";
           return ret;
-
-        }else
+        }else{
           return str;
+        }
       });
     }
     this.each(function() {
       var el = $(this);
-      var html = convert(el.html());
+      var html = convert(el.html()).replace(/\n/g,"<br>");
       el.html(html);
     });
     return this;
