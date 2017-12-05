@@ -5,16 +5,7 @@
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.js"></script>
   <script type="text/javascript" src="inc/jquery.mb.emoticons.js"></script>
-  <script type="text/javascript">
-  $(function(){
-  
-    $("#ta").mbSmilesBox();
-  
-  })
-  </script>
   <style type="text/css">
-  
-  
 .mbSmilesWrapper{
   position:relative;
   display:inline-block;
@@ -102,6 +93,9 @@
 
 <textarea id="ta" class="ta"></textarea>
 <br>
+<script type="text/javascript">
+		$("#ta").mbSmilesBox();
+</script>
 <span class="btn" onclick="$('#render').html($('#ta').val()).emoticonize(true).show()">render</span>
 
 <div id="render" style="display:none"></div>
